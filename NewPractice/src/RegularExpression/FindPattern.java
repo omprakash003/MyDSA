@@ -8,7 +8,7 @@ public class FindPattern {
         FindingPattern("ab","abaabbbab");
 
     }
-    private  static void FindingPattern(String pattern,String target){
+    protected   static void FindingPattern(String pattern,String target){
         Pattern p1=Pattern.compile(pattern);
         Matcher m=p1.matcher(target);
         int count=0;
