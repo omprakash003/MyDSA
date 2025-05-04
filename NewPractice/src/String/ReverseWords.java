@@ -1,17 +1,24 @@
 package String;
 
+import java.util.Arrays;
+
 public class ReverseWords {
     public static void main(String[] args) {
-        String s="S = i.like.this.program.very.much";
-        System.out.println(ReversWords(s));
+        String s = "I like this program very much";
+        System.out.println(reverseWords(s));
 
     }
-    public static String ReversWords(String s){
-        String[]str=s.split("");
-        StringBuilder ans=new StringBuilder();
-        for(int i=str.length-1;i>=0;i--){
-            ans.append(str[i]);
+
+    public static String reverseWords(String s) {
+        // Code here
+        String[] arr = s.split(" ");
+        StringBuilder sb = new StringBuilder("");
+        for (int i = arr.length - 1; i > 0; i--) {
+            sb.append(arr[i]);
+            sb.append(" ");
+
         }
-        return ans.toString();
+        sb.append(arr[0]);
+        return sb.toString();
     }
 }
