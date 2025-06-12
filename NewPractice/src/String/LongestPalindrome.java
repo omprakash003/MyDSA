@@ -1,41 +1,48 @@
 package String;
 
+import java.util.HashMap;
+
 class Solution {
     public static void main(String[] args) {
-        String s = "bb";
+        String s = "abcccccddd";
         System.out.println(longestPalindrome(s));
 
     }
-    public  static String longestPalindrome(String s) {
-        String ans=String.valueOf(s.charAt(0));
-        int low=0,high=1;
-        for(int i=0;i<s.length()-1;i++){
-            int left=i;
-            int right=i;
-            while((left >=0&&right<s.length())&&s.charAt(left)==s.charAt(right)){
-                if(right-left>ans.length()){
-                   ans= s.substring(left,right+1);
-                }
-
-
-                left--;
-                right++;
+    public  static int  longestPalindrome(String s) {
+        HashMap<Character, Integer>freq=new HashMap<>();
+        int hcount=0;
+        int scount=0;
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if(freq.containsKey(ch)){
+                freq.put(ch,freq.get(ch)+1);
             }
-            left=i;
-            right=i+1;
-            while((left >=0&&right<s.length())&&s.charAt(left)==s.charAt(right)){
-                if(right-left>ans.length()){
-                    ans= s.substring(left,right+1);
+            else{
+                freq.put(ch,1);
+            }
+        }
+        int count=0;
+        Boolean isEven=false;
+        for(Character i:freq.keySet()){
+            Integer e=freq.get(i);
+            System.out.println(i+"-->"+e);
+            if(e%2==0){
+                count+=e;
+            }
+            else{
+                if(!isEven){
+                    isEven=true;
+                    count+=e;
                 }
-
-                left--;
-                right++;
+                else{
+                    count+=e-1;
+                }
             }
         }
 
 
 
-        return ans;
+       return count;
 
 
     }
